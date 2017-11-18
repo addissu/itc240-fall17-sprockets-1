@@ -5,7 +5,7 @@
 <?php include 'includess/header.php';?>
 <h1><?=$pageID?></h1>
 <?php
-$sql = "select * from test_Customers";
+$sql = "select * from TopTwentyAllTime";
 //we connect to the db here
 $iConn = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
@@ -20,9 +20,9 @@ if(mysqli_num_rows($result) > 0)
         echo '<p>';
         echo 'FirstName: <b>' . $row['FirstName'] . '</b> ';
         echo 'LastName: <b>' . $row['LastName'] . '</b> ';
-        echo 'Email: <b>' . $row['Email'] . '</b> ';
+        echo 'Position: <b>' . $row['Position'] . '</b> ';
         
-        echo '<a href="customer_view.php?id=' . $row['CustomerID'] . '">' . $row['FirstName'] . '</a>';
+        echo '<a href="customer_view.php?id=' . $row['PlayerID'] . '">' . $row['FirstName'] . '</a>';
         
         echo '</p>';
     }    
@@ -38,4 +38,4 @@ if(mysqli_num_rows($result) > 0)
 @mysqli_close($iConn);
 
 ?>
-<?php include 'includess/footer.php';?>
+<?php get_footer();?>

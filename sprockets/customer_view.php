@@ -14,7 +14,7 @@ if(isset($_GET['id']))
 }
 
 
-$sql = "select * from test_Customers where CustomerID = $id";
+$sql = "select * from TopTwentyAllTime where PlayerID = $id";
 //we connect to the db here
 $iConn = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
@@ -28,7 +28,7 @@ if(mysqli_num_rows($result) > 0)
     {
         $FirstName = stripslashes($row['FirstName']);
         $LastName = stripslashes($row['LastName']);
-        $Email = stripslashes($row['Email']);
+        $Email = stripslashes($row['Position']);
         $title = "Title Page for " . $FirstName;
         $pageID = $FirstName;
         $Feedback = '';//no feedback necessary
@@ -39,7 +39,7 @@ if(mysqli_num_rows($result) > 0)
 }
 
 ?>
-<?php include 'includes/header.php';?>
+<?php include 'includess/header.php';?>
 <h1><?=$pageID?></h1>
 <?php
     
@@ -50,9 +50,9 @@ if($Feedback == '')
     echo '<p>';
     echo 'FirstName: <b>' . $FirstName . '</b> ';
     echo 'LastName: <b>' . $LastName . '</b> ';
-    echo 'Email: <b>' . $Email . '</b> ';
+    echo 'Position: <b>' . $Position . '</b> ';
     
-    echo '<img src="uploads/customer' . $id . '.jpg" />';
+    echo '<img src="uploads/player' . $id . '.jpg" />';
     
     echo '</p>'; 
 }else{//warn user no data
@@ -68,4 +68,4 @@ echo '<p><a href="customer_list.php">Go Back</a></p>';
 @mysqli_close($iConn);
 
 ?>
-<?php include 'includess/footer.php';?>
+<?php get_footer();?>
